@@ -1,0 +1,36 @@
+import React from "react";
+
+interface TaskFilterProps {
+  onFilterChange: (status: "all" | "active" | "completed") => void;
+  currentFilter: "all" | "active" | "completed";
+}
+
+const TaskFilter: React.FC<TaskFilterProps> = ({
+  onFilterChange,
+  currentFilter,
+}) => {
+  return (
+    <div>
+      <button
+        onClick={() => onFilterChange("all")}
+        className={currentFilter === "all" ? "active" : ""}
+      >
+        All
+      </button>
+      <button
+        onClick={() => onFilterChange("active")}
+        className={currentFilter === "active" ? "active" : ""}
+      >
+        Active
+      </button>
+      <button
+        onClick={() => onFilterChange("completed")}
+        className={currentFilter === "completed" ? "active" : ""}
+      >
+        Completed
+      </button>
+    </div>
+  );
+};
+
+export default TaskFilter;
