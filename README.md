@@ -28,5 +28,6 @@ update the different tasks from the list and change the status of each task.
 - Next.js
 - React.js
 - Jest
-- Tailwind (used inside the Next.js ecosystem)
+- Tailwind (used inside the Next.js ecosystem).
+  - I used tailwind also because it allows me to apply styles directly within the component using classes, instead of start switching between files (css and tsx). This significantly speeds up the initial styling process and prototyping.
 - uuid4 to generate new ids for Tasks, to avoid collision of keys.
