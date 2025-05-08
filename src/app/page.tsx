@@ -1,16 +1,22 @@
 "use client";
 import React, { useState } from "react";
 import TaskForm from "@/components/TaskForm";
+import TaskFilter from "@/components/TaskFilter";
 import TaskList, { Task } from "@/components/TaskList";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const handleDeleteTask = (id: string) => {
     let filteredTasks = tasks.filter((t) => t.id !== id);
     setTasks([...filteredTasks]);
+  };
+
+  const handleFilterChange = (newFilter: "all" | "active" | "completed") => {
+    setFilter(newFilter);
   };
 
   const handleEditTask = (taskToEdit: Task) => {
@@ -48,6 +54,11 @@ export default function Home() {
     setEditingTask(null);
   };
 
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "all") return true;
+    return task.status === filter;
+  });
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -57,11 +68,15 @@ export default function Home() {
           onUpdateTask={handleUpdateTask}
           editingTask={editingTask}
         />
+        <TaskFilter
+          onFilterChange={handleFilterChange}
+          currentFilter={filter}
+        />
         <TaskList
           onToggleStatus={handleToggleStatus}
           onEditTask={handleEditTask}
           onDeleteTask={handleDeleteTask}
-          tasks={tasks as unknown as Task[]}
+          tasks={filteredTasks as unknown as Task[]}
         />
       </main>
     </div>
