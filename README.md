@@ -8,7 +8,13 @@ The styling was implemented using tailwind.
 ### Description
 
 This application is a classic Task Manager Application, that allows you to add task, list the all the tasks available in the memory of the application, delete the tasks from the list,
-update the different tasks from the list and change the status of each task.
+update the different tasks from the list and change the status of each task. Also added the ability to filter the tasks based on their status.
+There are 4 components that encompase the application
+
+- TaskForm (Form to input data to create a new task and to edit a existing one)
+- TaskList (list of TaskItems)
+- TaskItem (Component that define a task and the operations over each task)
+- TaskFilter (Filter component)
 
 ### Instructions to run the application locally
 
