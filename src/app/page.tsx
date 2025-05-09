@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskForm from "@/components/TaskForm";
 import TaskFilter from "@/components/TaskFilter";
 import TaskList, { Task } from "@/components/TaskList";
@@ -9,6 +9,19 @@ export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+
+  const LOCAL_STORAGE_KEY = "react-task-app-tasks";
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleDeleteTask = (id: string) => {
     let filteredTasks = tasks.filter((t) => t.id !== id);
