@@ -21,15 +21,17 @@ const TaskItem: React.FC<TaskItemProps> = ({
   onEditTask,
 }) => {
   return (
-    <div className="border-grey-300 rounded-sm">
+    <div className="border-white rounded-sm w-full">
       <h3>{task.title}</h3>
       {task.description && <p>{task.description}</p>}
       <p>Status: {task.status}</p>
-      <button onClick={() => onToggleStatus(task.id)}>
-        {task.status === "active" ? "Mark Complete" : "Mark Incomplete"}
-      </button>
-      <button onClick={() => onDeleteTask(task.id)}>Delete</button>
-      <button onClick={() => onEditTask(task)}>Edit</button>
+      <div className="flex justify-around w-full">
+        <button onClick={() => onToggleStatus(task.id)}>
+          {task.status === "active" ? "Mark Complete" : "Mark Incomplete"}
+        </button>
+        <button onClick={() => onDeleteTask(task.id)}>Delete</button>
+        <button onClick={() => onEditTask(task)}>Edit</button>
+      </div>
     </div>
   );
 };

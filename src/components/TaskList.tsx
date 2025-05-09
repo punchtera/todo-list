@@ -22,16 +22,22 @@ const TaskList: React.FC<TaskListProps> = ({
   onEditTask,
 }) => {
   return (
-    <div>
-      {tasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onToggleStatus={onToggleStatus}
-          onDeleteTask={onDeleteTask}
-          onEditTask={onEditTask}
-        />
-      ))}
+    <div className="w-full">
+      <ul>
+        {tasks.map((task) => (
+          <li
+            key={task.id}
+            className="border-solid border-gray-200 border-2 rounded-sm p-4 mb-4"
+          >
+            <TaskItem
+              task={task}
+              onToggleStatus={onToggleStatus}
+              onDeleteTask={onDeleteTask}
+              onEditTask={onEditTask}
+            />
+          </li>
+        ))}
+      </ul>
       {tasks.length === 0 && <p>No tasks yet!</p>}
     </div>
   );

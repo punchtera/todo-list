@@ -10,10 +10,25 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
   currentFilter,
 }) => {
   return (
-    <div>
-      <button onClick={() => onFilterChange("all")}>All</button>
-      <button onClick={() => onFilterChange("active")}>Active</button>
-      <button onClick={() => onFilterChange("completed")}>Completed</button>
+    <div className="w-full flex justify-around">
+      <button
+        className={`${currentFilter === "all" ? "font-bold" : ""}`}
+        onClick={() => onFilterChange("all")}
+      >
+        All
+      </button>
+      <button
+        className={`${currentFilter === "active" ? "font-bold" : ""}`}
+        onClick={() => onFilterChange("active")}
+      >
+        Active
+      </button>
+      <button
+        className={`${currentFilter === "completed" ? "font-bold" : ""}`}
+        onClick={() => onFilterChange("completed")}
+      >
+        Completed
+      </button>
     </div>
   );
 };
