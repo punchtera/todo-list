@@ -10,7 +10,7 @@ export default function Home() {
   const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  const LOCAL_STORAGE_KEY = "react-task-app-tasks";
+  const LOCAL_STORAGE_KEY = "sugarwork-app-tasks";
 
   useEffect(() => {
     const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
