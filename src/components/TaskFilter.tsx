@@ -1,8 +1,9 @@
+import { FilterStatus } from "@/enums/FilterStatus";
 import React from "react";
 
 interface TaskFilterProps {
-  onFilterChange: (status: "all" | "active" | "completed") => void;
-  currentFilter: "all" | "active" | "completed";
+  onFilterChange: (status: FilterStatus) => void;
+  currentFilter: FilterStatus;
 }
 
 const TaskFilter: React.FC<TaskFilterProps> = ({
@@ -13,19 +14,19 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
     <div className="w-full flex justify-around">
       <button
         className={`${currentFilter === "all" ? "font-bold" : ""}`}
-        onClick={() => onFilterChange("all")}
+        onClick={() => onFilterChange(FilterStatus.ALL)}
       >
         All
       </button>
       <button
         className={`${currentFilter === "active" ? "font-bold" : ""}`}
-        onClick={() => onFilterChange("active")}
+        onClick={() => onFilterChange(FilterStatus.ACTIVE)}
       >
         Active
       </button>
       <button
         className={`${currentFilter === "completed" ? "font-bold" : ""}`}
-        onClick={() => onFilterChange("completed")}
+        onClick={() => onFilterChange(FilterStatus.COMPLETED)}
       >
         Completed
       </button>

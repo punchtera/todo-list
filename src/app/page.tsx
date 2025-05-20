@@ -4,10 +4,11 @@ import TaskForm from "@/components/TaskForm";
 import TaskFilter from "@/components/TaskFilter";
 import TaskList, { Task } from "@/components/TaskList";
 import { v4 as uuidv4 } from "uuid";
+import { FilterStatus } from "@/enums/FilterStatus";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
+  const [filter, setFilter] = useState<FilterStatus>(FilterStatus.ALL);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const LOCAL_STORAGE_KEY = "sugarwork-app-tasks";
@@ -28,7 +29,7 @@ export default function Home() {
     setTasks([...filteredTasks]);
   };
 
-  const handleFilterChange = (newFilter: "all" | "active" | "completed") => {
+  const handleFilterChange = (newFilter: FilterStatus) => {
     setFilter(newFilter);
   };
 
