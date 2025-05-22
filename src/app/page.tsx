@@ -5,6 +5,7 @@ import TaskFilter from "@/components/TaskFilter";
 import TaskList, { Task } from "@/components/TaskList";
 import { v4 as uuidv4 } from "uuid";
 import { FilterStatus } from "@/enums/FilterStatus";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -77,6 +78,7 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <h1>Task Manager</h1>
+        <ThemeSwitch />
         <TaskForm
           onAddTask={handleAddTask}
           onUpdateTask={handleUpdateTask}
